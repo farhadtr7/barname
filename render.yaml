@@ -1,10 +1,15 @@
-services
-  - type web
-    name telegram-bot
-    env python
-    plan free
-    buildCommand pip install -r requirements.txt
-    startCommand python bot.py
-    envVars
-      - key TELEGRAM_BOT_TOKEN
-        value 7140363296AAFyqCXSTvqjN6r9myIdBbQ2rRORnAz7Yzc
+services:
+  - type: web
+    name: my-telegram-bot
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python bot.py"
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        value: "7140363296:AAFyqCXSTvqjN6r9myIdBbQ2rRORnAz7Yzc"
+    healthCheckPath: "/"
+    healthCheckInterval: 30s
+    healthCheckTimeout: 5s
+    healthCheckGracePeriod: 30s
+    healthCheckRetries: 3
